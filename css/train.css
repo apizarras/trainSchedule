@@ -1,0 +1,33 @@
+body {
+    background-color: #C5C1C0;
+    /* background-image: url(../images/train-station-1868256__340.jpg);
+    width:100%;
+    height: auto;
+    display: block; */
+}
+h1 {
+    background-color: #192231;
+}
+
+.screen {
+    background-color: #C5C1C0;
+}
+
+.steel {
+    background-color: #0A1612;
+}
+
+.denim {
+    background-color: #1A2930;
+}
+
+.marigold {
+    background-color: #F7CE3E;
+}
+
+.img-fill {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}

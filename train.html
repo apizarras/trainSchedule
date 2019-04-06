@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/train.css">
+    <title>Train Schedules</title>
+</head>
+<body>
+        <h1 class="jumbotron text-light text-center mt-5 ml-5 mr-5 screen denim">Train Schedule</h1>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+        <div class="card card-default">
+            <div class="card-header">
+                Submit New Train Schedule
+            </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group row">
+                    <label for="train-name">Train Name:</label>
+                    <input class="form-control" id="train-name" type="text">
+                </div>
+                <div class="form-group row">
+                    <label for="destination">Destination:</label> 
+                    <input class="form-control" id="destination" type="text">
+                </div>
+                <div class="form-group row">
+                    <label for="first-time">First Time: </label>
+                    <input class="form-control" id="first-time" type="datetime-local">
+                </div>
+                <div class="form-group row">
+                    <label for="frequency"></label>
+                    <input class="form-control" id="frequency" type="number">
+                </div>
+                <button class="btn btn-default" id="add-train" type="submit">Submit</button>
+            </form>
+        </div>
+        </div>
+        <div class="col-1"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <h2 class="col text-center mt-5">Upcoming Trains</h2>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2" id="name-output"></div>
+        <div class="col-2" id="destination-output"></div>
+        <div class="col-1">
+    </div>
+
+
+
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  <script src="./javascript/moment.js"></script>
+  <script src="./javascript/train.js"></script>
+</body>
+</html>
