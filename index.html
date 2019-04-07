@@ -11,14 +11,14 @@
 <body>
 
 <div class="row">
-    <div class="sidenav col-3">    
-        <!-- <div class="col-1"></div> -->
-        <!-- <div class="col-10"> -->
+    <div class="sidenav col-3">   
+        <p>Number of Viewers: </p> 
+        <div class="ml-5 mb-3" id="connected-viewers"></div>
         <div class="card card-default">
-            <div class="card-header">
+            <div class="card-header denim text-light">
                 Submit New Train Schedule
             </div>
-            <div id="success-msg"></div>
+            <div class="text-center text-success" id="success-msg"></div>
         <div class="card-body ml-2">
             <form name="trainForm" id="form-object">
                 <div class="form-group row">
@@ -37,8 +37,8 @@
                     <label for="frequency">Frequency in Minutes</label>
                     <input class="form-control" id="frequency" type="number">
                 </div>
-                <button class="btn btn-default" id="add-train" value="Submit" type="submit">Submit</button>
-                <button type="reset" class="btn btn-default" id="reset">Reset</button>
+                <button class="btn btn-default border" id="add-train" value="Submit" type="submit">Submit</button>
+                <button type="reset" class="btn btn-default border" id="reset">Reset</button>
             </form>
         </div>
         </div>
@@ -47,13 +47,13 @@
     </div>
 
     <div class="col-9">
-        <h1 class="jumbotron text-light text-center mt-3 ml-5 mr-5 screen denim">Train Schedule</h1>
+        <h1 class="jumbotron denim text-light text-center mt-3 ml-5 mr-5">Train Schedule</h1>
     <!-- <div class="row"> -->
         <h2 class="col text-center mt-5">Upcoming Trains</h2>
     
     <!-- <div class="row ml-3 mr-3"> -->
-        <table class="table" id="train-table">
-            <thead class="thead-dark">
+        <table class="table table-striped" id="train-table">
+            <thead class="marigold border">
                 <tr>
                     <!-- <th scope="col">#</th> -->
                     <th scope="col">Train Name</th>

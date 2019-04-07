@@ -11,6 +11,23 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+let connections = database.ref("/connections");
+
+let connected = database.ref(".info/connected");
+
+connected.on("value", function(snapshot) {
+    if(snapshot.val()) {
+        const con = connections.push(true);
+
+        con.onDisconnect().remove();
+    }
+});
+console.log("num of connections " + connections);
+
+connections.on("value", function(snapshot) {
+    $("#connected-viewers").text(snapshot.numChildren());
+})
+
 let name = "";
 let destination = "";
 let firstTime = "";
@@ -31,7 +48,7 @@ $("#add-train").on("click", function(event) {
         firstTime: firstTime,
         frequency: frequency
     });
-    $("#success-msg").text("you have successfully added a new train schedule")
+        $("#success-msg").text("You have successfully added a new train schedule")
 });
 
 database.ref().on("child_added", function(snapshot) {
@@ -48,16 +65,16 @@ database.ref().on("child_added", function(snapshot) {
     console.log("current time" + currentTime);
 
     let timeDifference = moment().diff(moment(firstTime),"minutes");
-    console.log("time diff" + timeDifference);
+    console.log("time diff " + timeDifference);
 
     let timeRemainder = timeDifference % frequency;
-    console.log("remainder" + timeRemainder);
+    console.log("remainder " + timeRemainder);
 
     let timeTillNextTrain = frequency - timeRemainder;
-    console.log("min till next train" + timeTillNextTrain);
+    console.log("min till next train " + timeTillNextTrain);
 
     let nextTime = moment().add(timeTillNextTrain, "minutes");
-    console.log("next train time" + nextTime);
+    console.log("next train time " + nextTime);
 
     let nextTimeFormat = moment(nextTime).format('hh:mm a');
 
@@ -71,9 +88,3 @@ database.ref().on("child_added", function(snapshot) {
     );
     $("#train-table > tbody").append(newRow);
 });
-
-    // if(snapshot.child("name").exists()) {
-    //     let trainName = snapshot.val().name;
-    //     let destination = snapshot.val().destination;
-    //     let firstTime = snapshot.val().firstTime;
-    //     let frequency = snapshot.val().frequency;

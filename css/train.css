@@ -1,14 +1,15 @@
 body {
-    background-color: #C5C1C0;
     /* background-image: url(../images/train-station-1868256__340.jpg);
     width:100%;
     height: auto;
     display: block; */
 }
-h1 {
-    background-color: #192231;
-}
 
+.border {
+    border-style: solid;
+    border-width: .15rem;
+    border-color: #0A1612;
+}
 .screen {
     background-color: #C5C1C0;
 }
@@ -35,10 +36,14 @@ h1 {
 .sidenav {
     width: 15vw;
     z-index: 1;
-    top: 20px;
     left: 10px;
     background: #eee;
     overflow-x: hidden;
-    padding: 8px 0;
+    padding: 2rem 0;
     align-items: stretch;
   }
+
+  .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: rgba(206, 206, 206, 0.342);
+    }
