@@ -33,7 +33,7 @@
                     <input class="form-control" id="first-time" type="datetime-local">
                 </div>
                 <div class="form-group row">
-                    <label for="frequency"></label>
+                    <label for="frequency">Frequency in Minutes</label>
                     <input class="form-control" id="frequency" type="number">
                 </div>
                 <button class="btn btn-default" id="add-train" value="Submit" type="submit">Submit</button>
@@ -48,13 +48,28 @@
     <div class="row">
         <h2 class="col text-center mt-5">Upcoming Trains</h2>
     </div>
-    <div class="row">
-        <div class="col-1"></div>
+    <div class="row ml-3 mr-3">
+        <table class="table" id="train-table">
+            <thead class="thead-dark">
+                <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Train Name</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">First Time</th>
+                    <th scope="col">Next Time</th>
+                    <th scope="col">Frequency in Minutes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-row"></tr>
+            </tbody>
+        </table>
+        <!-- <div class="col-1"></div>
         <div class="col-2" id="name-output"></div>
         <div class="col-2" id="destination-output"></div>
         <div class="col-2" id="first-time-output"></div>
         <div class="col-2" id="frequency"></div>
-        <div class="col-1">
+        <div class="col-1"></div> -->
     </div>
 
 

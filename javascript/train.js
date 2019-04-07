@@ -37,15 +37,25 @@ $("#add-train").on("click", function(event) {
 database.ref().on("child_added", function(snapshot) {
     console.log(snapshot.val().name);
 
+    let name = snapshot.val().name;
+    let destination = snapshot.val().destination;
+    let firstTime = snapshot.val().firstTime;
+    let frequency = snapshot.val().frequency;
+
+    const firstTimePretty =moment(firstTime).format('MMMM Do YYYY, h:mm:ss a')
+    
+    const newRow = $("<tr>").append(
+        $("<td>").text(name),
+        $("<td>").text(destination),
+        $("<td>").text(firstTimePretty),
+        $("<td>").text("nextTime"),
+        $("<td>").text(frequency)
+    );
+    $("#train-table > tbody").append(newRow);
+});
+
     // if(snapshot.child("name").exists()) {
     //     let trainName = snapshot.val().name;
     //     let destination = snapshot.val().destination;
     //     let firstTime = snapshot.val().firstTime;
     //     let frequency = snapshot.val().frequency;
-    
-        $("#name-output").text(snapshot.val().name);
-        $("#destination-output").text(snapshot.val().destination);
-        $("#first-time-output").text(snapshot.val().firstTime);
-        $("#frequency").text(snapshot.val().frequency);
-    // }
-});
