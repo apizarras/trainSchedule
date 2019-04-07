@@ -24,7 +24,7 @@ $("#add-train").on("click", function(event) {
     let firstTime = $("#first-time").val().trim();
     let frequency = $("#frequency").val().trim();
 
-    database.ref().set({
+    database.ref().push({
         name: name,
         destination: destination,
         firstTime: firstTime,
@@ -32,14 +32,18 @@ $("#add-train").on("click", function(event) {
     });
 });
 
-database.ref().on("value", function(snapshot) {
+database.ref().on("child_added", function(snapshot) {
     console.log(snapshot.val().name);
 
-    if(snapshot.child("name").exists()) {
-        let trainName = snapshot.val().name;
-        let destination = snapshot.val().destination;
+    // if(snapshot.child("name").exists()) {
+    //     let trainName = snapshot.val().name;
+    //     let destination = snapshot.val().destination;
+    //     let firstTime = snapshot.val().firstTime;
+    //     let frequency = snapshot.val().frequency;
     
-        $("#name-output").text(name);
-        $("#destination-output").text(destination);
-    }
+        $("#name-output").text(snapshot.val().trainName);
+        $("#destination-output").text(snapshot.val().destination);
+        $("#first-time-output").text(snapshot.val().firstTime);
+        $("#frequency").text(snapshot.val().frequency);
+    // }
 });
