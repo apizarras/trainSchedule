@@ -16,6 +16,7 @@ let destination = "";
 let firstTime = "";
 let frequency = "";
 
+
 $("#add-train").on("click", function(event) {
     event.preventDefault();
 
@@ -30,6 +31,7 @@ $("#add-train").on("click", function(event) {
         firstTime: firstTime,
         frequency: frequency
     });
+    $("#success-msg").text("you have successfully added a new train schedule")
 });
 
 database.ref().on("child_added", function(snapshot) {
@@ -41,7 +43,7 @@ database.ref().on("child_added", function(snapshot) {
     //     let firstTime = snapshot.val().firstTime;
     //     let frequency = snapshot.val().frequency;
     
-        $("#name-output").text(snapshot.val().trainName);
+        $("#name-output").text(snapshot.val().name);
         $("#destination-output").text(snapshot.val().destination);
         $("#first-time-output").text(snapshot.val().firstTime);
         $("#frequency").text(snapshot.val().frequency);

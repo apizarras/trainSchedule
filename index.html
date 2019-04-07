@@ -9,7 +9,7 @@
     <title>Train Schedules</title>
 </head>
 <body>
-        <h1 class="jumbotron text-light text-center mt-5 ml-5 mr-5 screen denim">Train Schedule</h1>
+        <h1 class="jumbotron text-light text-center mt-3 ml-5 mr-5 screen denim">Train Schedule</h1>
     <div class="row">
         <div class="col-1"></div>
         <div class="col-10">
@@ -17,8 +17,9 @@
             <div class="card-header">
                 Submit New Train Schedule
             </div>
-        <div class="card-body">
-            <form>
+            <div id="success-msg"></div>
+        <div class="card-body" >
+            <form name="trainForm" id="form-object">
                 <div class="form-group row">
                     <label for="train-name">Train Name:</label>
                     <input class="form-control" id="train-name" type="text">
@@ -35,7 +36,8 @@
                     <label for="frequency"></label>
                     <input class="form-control" id="frequency" type="number">
                 </div>
-                <button class="btn btn-default" id="add-train" type="submit">Submit</button>
+                <button class="btn btn-default" id="add-train" value="Submit" type="submit">Submit</button>
+                <button type="reset" class="btn btn-default" id="reset">Reset</button>
             </form>
         </div>
         </div>
