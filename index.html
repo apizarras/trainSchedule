@@ -11,9 +11,7 @@
 <body>
 
 <div class="row">
-    <div class="sidenav col-3">   
-        <p>Number of Viewers: </p> 
-        <div class="ml-5 mb-3" id="connected-viewers"></div>
+    <div class="sidenav col-3">
         <div class="card card-default">
             <div class="card-header denim text-light">
                 Submit New Train Schedule
@@ -40,6 +38,8 @@
                 <button class="btn btn-default border" id="add-train" value="Submit" type="submit">Submit</button>
                 <button type="reset" class="btn btn-default border" id="reset">Reset</button>
             </form>
+            <p class="mt-3"><strong>Number of Viewers: </strong></p> 
+        <div class="ml-5 mt-3" id="connected-viewers"></div>
         </div>
         </div>
         <!-- <div class="col-1"></div> -->
@@ -58,9 +58,11 @@
                     <!-- <th scope="col">#</th> -->
                     <th scope="col">Train Name</th>
                     <th scope="col">Destination</th>
+                    <th scope="col">Frequency in Minutes</th>
                     <th scope="col">First Time</th>
                     <th scope="col">Next Time</th>
-                    <th scope="col">Frequency in Minutes</th>
+                    <th scopt="col">Min Till Next Train</th>
+                    
                 </tr>
             </thead>
             <tbody>

@@ -11,6 +11,7 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+//see how many active viewers there are
 let connections = database.ref("/connections");
 
 let connected = database.ref(".info/connected");
@@ -33,7 +34,7 @@ let destination = "";
 let firstTime = "";
 let frequency = "";
 
-
+//submit button trigger getting form values and pushing them to firebase
 $("#add-train").on("click", function(event) {
     event.preventDefault();
 
@@ -51,6 +52,7 @@ $("#add-train").on("click", function(event) {
         $("#success-msg").text("You have successfully added a new train schedule")
 });
 
+//listener to see if your firebase object has child items and then display in table
 database.ref().on("child_added", function(snapshot) {
     console.log(snapshot.val().name);
 
@@ -82,9 +84,11 @@ database.ref().on("child_added", function(snapshot) {
     const newRow = $("<tr>").append(
         $("<td>").text(name),
         $("<td>").text(destination),
+        $("<td>").text(frequency),
         $("<td>").text(firstTimePretty),
         $("<td>").text(nextTimeFormat),
-        $("<td>").text(frequency)
+        $("<td>").text(timeTillNextTrain)
+        
     );
     $("#train-table > tbody").append(newRow);
 });
