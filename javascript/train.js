@@ -42,13 +42,31 @@ database.ref().on("child_added", function(snapshot) {
     let firstTime = snapshot.val().firstTime;
     let frequency = snapshot.val().frequency;
 
-    const firstTimePretty =moment(firstTime).format('MMMM Do YYYY, h:mm:ss a')
+    const firstTimePretty = moment(firstTime).format('MMMM Do YYYY, h:mm:ss a')
+
+    const currentTime = moment().format('hh:mm');
+    console.log("current time" + currentTime);
+
+    let timeDifference = moment().diff(moment(firstTime),"minutes");
+    console.log("time diff" + timeDifference);
+
+    let timeRemainder = timeDifference % frequency;
+    console.log("remainder" + timeRemainder);
+
+    let timeTillNextTrain = frequency - timeRemainder;
+    console.log("min till next train" + timeTillNextTrain);
+
+    let nextTime = moment().add(timeTillNextTrain, "minutes");
+    console.log("next train time" + nextTime);
+
+    let nextTimeFormat = moment(nextTime).format('hh:mm a');
+
     
     const newRow = $("<tr>").append(
         $("<td>").text(name),
         $("<td>").text(destination),
         $("<td>").text(firstTimePretty),
-        $("<td>").text("nextTime"),
+        $("<td>").text(nextTimeFormat),
         $("<td>").text(frequency)
     );
     $("#train-table > tbody").append(newRow);
