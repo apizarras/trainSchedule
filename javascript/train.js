@@ -11,36 +11,38 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-//see how many active viewers there are
-let connections = database.ref("/connections");
+//see how many active viewers there are, causing extra rows on upcoming trains tables, but didn't want to delete
+// let connections = database.ref("watchers/connections");
 
-let connected = database.ref(".info/connected");
+// let connected = database.ref(".info/connected");
 
-connected.on("value", function(snapshot) {
-    if(snapshot.val()) {
-        const con = connections.push(true);
+// connected.on("value", function(snapshot) {
+//     if(snapshot.val()) {
+//         const con = connections.push(true);
 
-        con.onDisconnect().remove();
-    }
-});
-console.log("num of connections " + connections);
+//         con.onDisconnect().remove();
+//     }
+// });
+// console.log("num of connections " + connections);
 
-connections.on("value", function(snapshot) {
-    $("#connected-viewers").text(snapshot.numChildren());
-})
+// connections.on("value", function(snapshot) {
+//     $("#connected-viewers").text(snapshot.numChildren());
+// })
 
-let name = "";
-let destination = "";
-let firstTime = "";
-let frequency = "";
+// let name = "";
+// let destination = "";
+// let firstTime = "";
+// let frequency = "";
 
 //submit button trigger getting form values and pushing them to firebase
 $("#add-train").on("click", function(event) {
     event.preventDefault();
-
+    
     let name = $("#train-name").val().trim();
     let destination = $("#destination").val().trim();
     let firstTime = $("#first-time").val().trim();
+    console.log(firstTime);
+    console.log(typeof firstTime);
     let frequency = $("#frequency").val().trim();
 
     database.ref().push({
@@ -59,14 +61,16 @@ database.ref().on("child_added", function(snapshot) {
     let name = snapshot.val().name;
     let destination = snapshot.val().destination;
     let firstTime = snapshot.val().firstTime;
+    console.log('first time' + firstTime);
     let frequency = snapshot.val().frequency;
 
-    const firstTimePretty = moment(firstTime).format('MMMM Do YYYY, h:mm:ss a')
+    const firstTimePretty = moment(firstTime, "HH:mm").subtract(1, "years");
+    console.log(firstTimePretty);
 
     const currentTime = moment().format('hh:mm');
     console.log("current time" + currentTime);
 
-    let timeDifference = moment().diff(moment(firstTime),"minutes");
+    let timeDifference = moment().diff(moment(firstTimePretty), "minutes");
     console.log("time diff " + timeDifference);
 
     let timeRemainder = timeDifference % frequency;
@@ -85,10 +89,14 @@ database.ref().on("child_added", function(snapshot) {
         $("<td>").text(name),
         $("<td>").text(destination),
         $("<td>").text(frequency),
-        $("<td>").text(firstTimePretty),
+        $("<td>").text(firstTime),
         $("<td>").text(nextTimeFormat),
         $("<td>").text(timeTillNextTrain)
         
     );
     $("#train-table > tbody").append(newRow);
+});
+
+$("#reset").on("click", function() {
+    $("#success-msg").empty();
 });
